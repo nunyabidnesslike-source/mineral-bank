@@ -1,4 +1,4 @@
-﻿const express = require('express');
+const express = require('express');
 const { Resend } = require('resend');
 const path = require('path');
 
@@ -27,9 +27,9 @@ app.post('/api/contact', async (req, res) => {
 
         const data = await resend.emails.send({
             from: 'Mineral Bank Staging <onboarding@resend.dev>',
-            to: ['nunyasbidnesslike@gmail.com'],
-            subject: `[Staging Test] Contact from ${name}`,
-            text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
+            to: ['nunya.bidnesslike@gmail.com'],
+            subject: [Staging Test] Contact from ,
+            text: Name: \nEmail: \nMessage: 
         });
 
         return res.status(200).json({ success: true, data });
@@ -39,7 +39,5 @@ app.post('/api/contact', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`[STAGING ENGINE] Running live at http://localhost:${PORT}`);
+    console.log(Mineral Bank staging server running on port );
 });
-
-
