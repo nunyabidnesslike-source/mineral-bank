@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mineral Bank &mdash; Institutional Mineral Vaulting & Asset Intelligence</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mineral Bank delivers sovereign-grade physical vaulting, geological due diligence, and asset intelligence for strategic mineral reserves.">
+  <link rel="canonical" href="https://mineralbank.pages.dev/">
+  
+  <!-- Open Graph / LinkedIn -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mineral Bank &mdash; Institutional Mineral Vaulting">
+  <meta property="og:description" content="Sovereign-grade physical custody and geological intelligence for strategic mineral reserves.">
+  <meta property="og:image" content="https://mineralbank.pages.dev/images/logo.png">
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Mineral Bank",
+    "url": "https://mineralbank.pages.dev",
+    "logo": "https://mineralbank.pages.dev/images/logo.png",
+    "description": "Non-depository mineral vaulting, assay verification, and asset intelligence enterprise.",
+    "knowsAbout": ["Geological Due Diligence", "JORC Compliance", "NI 43-101", "Mineral Vaulting", "Mineral Acquisitions"]
+  }
+  </script>
+
+  <!-- Cloudflare Web Analytics -->
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "YOUR_CLOUDFLARE_ANALYTICS_TOKEN"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+
+  <style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg-primary:#0a0d12;
+  --bg-secondary:#111827;
+  --bg-card:#1a2235;
+  --gold:#c9a84c;
+  --gold-light:#e8c96a;
+  --text-primary:#f0ece0;
+  --text-muted:#9ca3af;
+  --border:rgba(201,168,76,0.25);
+  --max-w:1200px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg-primary);color:var(--text-primary);font-family:'Inter',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden}
+
+/* NAVBAR */
+nav{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(10,13,18,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem}
+.nav-inner{max-width:var(--max-w);margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:70px}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo{width:42px;height:42px;object-fit:contain}
+.nav-name{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.15rem;letter-spacing:0.12em;color:var(--gold);text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none}
+.nav-links a{text-decoration:none;color:var(--text-muted);font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:0.45rem 1.2rem;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;text-decoration:none}
+.nav-cta:hover{background:var(--gold);color:var(--bg-primary)}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px}
+.nav-toggle span{display:block;width:24px;height:2px;background:var(--gold)}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 2rem 4rem;background:radial-gradient(ellipse at 50% 40%, rgba(201,168,76,0.07) 0%, transparent 70%)}
+.hero-logo{width:200px;height:200px;object-fit:contain;margin:0 auto 2rem;filter:drop-shadow(0 0 30px rgba(201,168,76,0.3))}
+.hero-eyebrow{font-size:0.75rem;letter-spacing:0.25em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem}
+.hero-headline{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,5vw,3.6rem);line-height:1.15;max-width:680px;margin:0 auto 1.5rem}
+.hero-headline em{font-style:italic;color:var(--gold-light)}
+.hero-sub{color:var(--text-muted);max-width:520px;margin:0 auto 2.5rem;font-size:0.95rem}
+.hero-ctas{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--gold);color:var(--bg-primary);padding:0.75rem 2rem;font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;border:none;cursor:pointer;text-decoration:none;font-weight:500;transition:all 0.2s}
+.btn-primary:hover{background:var(--gold-light)}
+.btn-outline{background:transparent;border:1px solid var(--border);color:var(--text-muted);padding:0.75rem 2rem;font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:all 0.2s}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+
+/* SECTIONS */
+section{padding:6rem 2rem}
+.section-inner{max-width:var(--max-w);margin:0 auto}
+.section-label{font-size:0.72rem;letter-spacing:0.28em;color:var(--gold);text-transform:uppercase;margin-bottom:0.75rem}
+.section-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(1.6rem,3.5vw,2.6rem);margin-bottom:1rem}
+.section-divider{width:60px;height:1px;background:var(--gold);margin:1.5rem 0}
+
+/* FULL-BLEED SLIDER */
+#slider-fullbleed{padding:0;margin-top:80px;background:#000}
+@media(max-width:900px){#slider-fullbleed{margin-top:60px}}
+@media(max-width:600px){#slider-fullbleed{margin-top:40px}}
+.slider-inner{position:relative;width:100vw;height:60vh;max-height:520px;overflow:hidden}
+.slider-track{position:relative;width:100%;height:100%}
+.slider-slide{position:absolute;inset:0;opacity:0;z-index:4;transition:opacity 1.2s ease-in-out}
+.slider-slide.active{opacity:1;z-index:5}
+.slider-slide img{width:100%;height:100%;object-fit:cover;object-position:center center;display:block;animation:kenburns 18s linear infinite}
+@media(max-width:768px){.slider-slide img{object-fit:contain;object-position:center center;background:#000;animation:none}}
+@keyframes kenburns{0%{transform:scale(1.05)}50%{transform:scale(1.12)}100%{transform:scale(1.05)}}
+.slider-inner::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom, rgba(201,168,76,0.12) 0%, rgba(10,13,18,0.35) 100%);pointer-events:none;z-index:3}
+
+/* PILLARS */
+#pillars{background:var(--bg-secondary)}
+.pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.pillar-card{background:var(--bg-card);border:1px solid var(--border);padding:2.5rem 2rem;transition:0.2s}
+.pillar-card:hover{transform:translateY(-4px);border-color:rgba(201,168,76,0.5)}
+.pillar-icon{font-size:2rem;margin-bottom:1.25rem}
+.pillar-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.25rem;color:var(--gold);margin-bottom:0.75rem}
+.pillar-text{color:var(--text-muted);font-size:0.88rem;line-height:1.7}
+
+/* ABOUT */
+#about{background:var(--bg-primary)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.about-text p{color:var(--text-muted);font-size:0.9rem;line-height:1.85;margin-bottom:1rem}
+.about-logo{width:240px;height:240px;object-fit:contain;filter:drop-shadow(0 0 40px rgba(201,168,76,0.25))}
+
+/* SERVICES */
+#services{background:var(--bg-secondary)}
+.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.service-card{background:var(--bg-card);border:1px solid var(--border);padding:2rem;transition:border-color 0.2s}
+.service-card:hover{border-color:rgba(201,168,76,0.5)}
+.service-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:var(--border);margin-bottom:0.5rem}
+.service-title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.2rem;color:var(--gold-light);margin-bottom:0.6rem}
+.service-text{color:var(--text-muted);font-size:0.87rem;line-height:1.7}
+
+/* CHARTER */
+#charter{background:linear-gradient(135deg,#0d1420 0%,#111827 100%);border-top:1px solid var(--border);border-bottom:1px solid var(--border);text-align:center}
+.charter-quote{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.2rem,2.5vw,1.75rem);line-height:1.6;max-width:800px;margin:0 auto 1.5rem;font-style:italic}
+.charter-source{font-size:0.78rem;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase}
+
+/* CONTACT */
+#contact{background:var(--bg-primary)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem}
+.contact-info p{color:var(--text-muted);font-size:0.88rem;line-height:1.8;margin-bottom:1.5rem}
+.form-group{display:flex;flex-direction:column;gap:0.5rem}
+.form-group input,.form-group textarea{background:var(--bg-card);border:1px solid var(--border);color:var(--text-primary);padding:0.85rem 1rem;font-size:0.9rem}
+.form-group textarea{min-height:130px}
+
+/* FOOTER */
+footer{background:var(--bg-secondary);border-top:1px solid var(--border);padding:3rem 2rem}
+.footer-inner{max-width:var(--max-w);margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2rem}
+.footer-logo{width:40px;height:40px;object-fit:contain}
+.footer-name{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1rem;color:var(--gold)}
+.footer-copy{font-size:0.75rem;color:var(--text-muted)}
+.footer-links{display:flex;gap:1.5rem;list-style:none}
+.footer-links a{text-decoration:none;color:var(--text-muted);font-size:0.78rem;letter-spacing:0.07em;text-transform:uppercase;transition:color 0.2s}
+.footer-links a:hover{color:var(--gold)}
+
+/* MOBILE */
+@media(max-width:900px){
+  .pillars-grid{grid-template-columns:1fr}
+  .about-grid,.contact-grid{grid-template-columns:1fr;gap:2.5rem}
+  .about-logo{display:none}
+  .services-grid{grid-template-columns:1fr}
+  .nav-links,.nav-cta{display:none}
+  .nav-toggle{display:flex}
+}
+@media(max-width:600px){
+  .footer-inner{flex-direction:column;text-align:center}
+  .footer-links{justify-content:center}
+}
+  </style>
+</head>
+<body>
+
+<!-- REGULATORY NOTICE 1 of 3 -->
+<div class="regulatory-banner" style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.25);padding:1.25rem 2rem;text-align:center;margin:1rem auto;max-width:1200px;font-size:0.82rem;color:#e8c96a;letter-spacing:0.04em;line-height:1.5;">
+  <strong>REGULATORY NOTICE:</strong> Mineral Bank LLC operates exclusively as a non-depository mineral vaulting and asset intelligence enterprise. It does not accept banking deposits or conduct licensed commercial banking transactions.
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#hero" class="nav-brand">
+      <img src="images/logo.png" class="nav-logo" alt="Mineral Bank Logo">
+      <span class="nav-name">MINERAL BANK</span>
+    </a>
+    <button class="nav-toggle"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#pillars">Pillars</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Submit Inquiry</a>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="section-inner">
+    <img src="images/logo.png" class="hero-logo" alt="Mineral Bank Emblem">
+    <div class="hero-eyebrow">FOUNDED IN &middot; MMXXVI &middot; MINERAL ASSETS &amp; INSTITUTIONAL STEWARDSHIP</div>
+    <h1 class="hero-headline">Where Earth's <em>Enduring Wealth</em> Meets Institutional Precision</h1>
+    <p class="hero-sub">Mineral Bank is a dedicated institution for mineral asset custody, physical vaulting, and strategic reserve facilitation &mdash; built on the bedrock of geological intelligence and sovereign-grade discipline.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn-primary">SUBMIT INQUIRY</a>
+      <a href="#services" class="btn-outline">Explore Services</a>
+    </div>
+  </div>
+</section>
+
+<section id="slider-fullbleed">
+  <div class="slider-inner">
+    <div class="slider-track" id="mb-slider">
+      <div class="slider-slide active"><img src="images/slide1.jpg" alt="Physical mineral vaulting facility"></div>
+      <div class="slider-slide"><img src="images/slide2.jpg" alt="Strategic mineral resource reserves"></div>
+      <div class="slider-slide"><img src="images/slide3.jpg" alt="Geological asset intelligence and core samples"></div>
+      <div class="slider-slide"><img src="images/slide4.jpg" alt="Secure institutional custody infrastructure"></div>
+      <div class="slider-slide"><img src="images/slide5.jpg" alt="Global mineral asset operations"></div>
+      <div class="slider-slide"><img src="images/slide6.jpg" alt="Verified physical bullion and reserves"></div>
+      <div class="slider-slide"><img src="images/slide7.jpg" alt="High-grade industrial metal storage"></div>
+      <div class="slider-slide"><img src="images/slide8.jpg" alt="Sovereign resource vaulting archive"></div>
+      <div class="slider-slide"><img src="images/slide9.jpg" alt="Precious metal vault facility"></div>
+      <div class="slider-slide"><img src="images/slide10.jpg" alt="Geological core laboratory"></div>
+      <div class="slider-slide"><img src="images/slide11.jpg" alt="Institutional mineral vaulting room"></div>
+      <div class="slider-slide"><img src="images/slide12.jpg" alt="Secure resource auditing floor"></div>
+      <div class="slider-slide"><img src="images/slide13.jpg" alt="Certified mineral reserve vault"></div>
+      <div class="slider-slide"><img src="images/slide14.jpg" alt="Global commodity logistics hub"></div>
+      <div class="slider-slide"><img src="images/slide15.jpg" alt="Subterranean physical vault corridor"></div>
+      <div class="slider-slide"><img src="images/slide16.jpg" alt="Precious resource inspection"></div>
+      <div class="slider-slide"><img src="images/slide17.jpg" alt="Strategic reserve asset management"></div>
+      <div class="slider-slide"><img src="images/slide18.jpg" alt="Independent technical assay station"></div>
+      <div class="slider-slide"><img src="images/slide19.jpg" alt="High-security mineral depository"></div>
+      <div class="slider-slide"><img src="images/slide20.jpg" alt="Resource provenance verification center"></div>
+      <div class="slider-slide"><img src="images/slide21.jpg" alt="Global institutional vault infrastructure"></div>
+      <div class="slider-slide"><img src="images/slide22.jpg" alt="Sovereign grade asset storage"></div>
+      <div class="slider-slide"><img src="images/slide23.jpg" alt="Rare earth element holding vault"></div>
+      <div class="slider-slide"><img src="images/slide24.jpg" alt="Certified assay testing laboratory"></div>
+      <div class="slider-slide"><img src="images/slide25.jpg" alt="Secure geological audit vault"></div>
+      <div class="slider-slide"><img src="images/slide26.jpg" alt="Enterprise mineral custody bay"></div>
+      <div class="slider-slide"><img src="images/slide27.jpg" alt="Physical commodity vaulting center"></div>
+      <div class="slider-slide"><img src="images/slide28.jpg" alt="Institutional reserve audit facility"></div>
+      <div class="slider-slide"><img src="images/slide29.jpg" alt="Sovereign mineral custody vault"></div>
+      <div class="slider-slide"><img src="images/slide30.jpg" alt="Global resource intelligence terminal"></div>
+    </div>
+  </div>
+</section>
+
+<section id="pillars">
+  <div class="section-inner">
+    <div class="pillars-header">
+      <div class="section-label">Core Custodial Architecture</div>
+      <h2 class="section-title">The Core Architecture of Mineral Bank</h2>
+      <div class="section-divider"></div>
+      <p class="hero-sub">Mineral Bank operates at the intersection of geoscience and institutional stewardship, facilitating mineral acquisitions, strategic vaulting, and sovereign-grade custody with institutional discipline.</p>
+    </div>
+    <div class="pillars-grid">
+      <article class="pillar-card">
+        <div class="pillar-icon">⛏</div>
+        <h3 class="pillar-title">Strategic Reserve Vaulting</h3>
+        <p class="pillar-text">Sovereign-grade physical custody for certified mineral reserves &mdash; gold, rare earths, industrial metals, and strategic commodities &mdash; providing stability anchored in physical assets.</p>
+      </article>
+      <article class="pillar-card">
+        <div class="pillar-icon">🤝</div>
+        <h3 class="pillar-title">Mineral & Asset Acquisitions</h3>
+        <p class="pillar-text">Facilitating non-depository, institutional acquisition protocols for high-purity mineral deposits, physical reserves, and strategic resource holdings with rigorous verification.</p>
+      </article>
+      <article class="pillar-card">
+        <div class="pillar-icon">🏛</div>
+        <h3 class="pillar-title">Asset Intelligence</h3>
+        <p class="pillar-text">Proprietary geological and market data analytics informing asset verification decisions. Real-time resource valuations, supply-chain risk modelling, and jurisdictional intelligence at scale.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- REGULATORY NOTICE 2 of 3 -->
+<div class="regulatory-banner" style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.25);padding:1.25rem 2rem;text-align:center;margin:2rem auto;max-width:1200px;font-size:0.82rem;color:#e8c96a;letter-spacing:0.04em;line-height:1.5;">
+  <strong>REGULATORY NOTICE:</strong> Mineral Bank LLC operates exclusively as a non-depository mineral vaulting and asset intelligence enterprise. It does not accept banking deposits or conduct licensed commercial banking transactions.
+</div>
+
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-label">Our Mandate</div>
+        <h2 class="section-title">Built on the Bedrock of the Earth</h2>
+        <div class="section-divider"></div>
+        <p>Mineral Bank was established in MMXXVI with a singular conviction: that the enduring wealth of nations lies beneath the surface. We serve sovereign wealth funds, family offices, mining enterprises, and institutional partners who demand counterparties with the geological literacy to match their ambitions.</p>
+        <p>Beyond physical vaulting and provenance assaying, Mineral Bank facilitates direct institutional mineral acquisitions &mdash; connecting qualified sovereign and institutional counterparties with verified physical resource holdings backed by rigorous geological due diligence.</p>
+        <p>Our founding charter enshrines an institutional commitment to precision &mdash; in asset verification, custody infrastructure, and geological intelligence. Every vaulting framework we establish, every custodial protocol we execute, is governed by the same rigour that defines professional mineral science.</p>
+      </div>
+      <div class="about-logo-wrap">
+        <img src="images/logo.png" alt="Mineral Bank Emblem" class="about-logo">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="section-inner">
+    <div class="services-header">
+      <div class="section-label">Institutional Services</div>
+      <h2 class="section-title">Mineral Asset &amp; Vaulting Infrastructure</h2>
+      <div class="section-divider"></div>
+      <p class="hero-sub">We design and administer non-depository mineral custody architectures for sovereigns, institutions, and mineral enterprises operating across global jurisdictions.</p>
+    </div>
+    <div class="services-grid">
+      <article class="service-card">
+        <div class="service-num">01</div>
+        <h3 class="service-title">Asset Vaulting & Custody</h3>
+        <p class="service-text">Secure sovereign-grade physical vaulting and provenance tracking for mineral reserves. We optimize physical security protocols, custody structures, and long-duration physical holdings with institutional precision.</p>
+      </article>
+      <article class="service-card">
+        <div class="service-num">02</div>
+        <h3 class="service-title">Mineral & Asset Acquisitions</h3>
+        <p class="service-text">Executing institutional acquisition protocols for high-purity mineral deposits, physical reserves, and strategic resource holdings with verified provenance and secure onboarding.</p>
+      </article>
+      <article class="service-card">
+        <div class="service-num">03</div>
+        <h3 class="service-title">Geological Due Diligence</h3>
+        <p class="service-text">Independent technical review of mineral assets for valuation, provenance verification, and strategic planning. Our in-house geoscience team delivers JORC and NI 43-101 compliant assessments with institutional rigour.</p>
+      </article>
+      <article class="service-card">
+        <div class="service-num">04</div>
+        <h3 class="service-title">Strategic Reserve Facilitation</h3>
+        <p class="service-text">Assay verification, royalty provenance monitoring, and offtake facilitation. We advise sovereigns, majors, and emerging producers on strategic reserve physical allocation across global jurisdictions.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="charter">
+  <div class="section-inner">
+    <p class="charter-quote">We hold that the wealth residing within the earth is not merely a commodity to be extracted, but a core reserve to be stewarded &mdash; with geological integrity, Institutional Integrity, and an unbroken chain of accountability to those who follow.</p>
+    <div class="charter-source">Mineral Bank Founding Charter · MMXXVI</div>
+  </div>
+</section>
+
+<!-- REGULATORY NOTICE 3 of 3 -->
+<div class="regulatory-banner" style="background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.25);padding:1.25rem 2rem;text-align:center;margin:2rem auto;max-width:1200px;font-size:0.82rem;color:#e8c96a;letter-spacing:0.04em;line-height:1.5;">
+  <strong>REGULATORY NOTICE:</strong> Mineral Bank LLC operates exclusively as a non-depository mineral vaulting and asset intelligence enterprise. It does not accept banking deposits or conduct licensed commercial banking transactions.
+</div>
+
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="section-label">Submit Inquiry</div>
+        <h2 class="section-title">Begin the Conversation</h2>
+        <div class="section-divider"></div>
+        <p>For institutional relationships, custody arrangements, and strategic partnerships, we invite qualified counterparties to initiate a confidential dialogue with our client relations team.</p>
+        <div class="contact-detail">
+          <span>Headquarters</span>
+          <strong>Mineral Bank · Global Resource Vaulting Infrastructure</strong>
+          <span>Founded MMXXVI · Global Operations</span>
+        </div>
+      </div>
+      <div class="contact-form">
+        <form>
+          <div class="form-group">
+            <label for="full-name">Full Name</label>
+            <input id="full-name" type="text" placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label for="institution">Institution</label>
+            <input id="institution" type="text" placeholder="Organisation or enterprise">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="your@institution.com">
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" placeholder="Describe your inquiry or area of interest..."></textarea>
+          </div>
+          <button type="submit" class="btn-primary">Submit Inquiry</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="images/logo.png" alt="Mineral Bank Logo" class="footer-logo">
+      <div>
+        <div class="footer-name">MINERAL BANK</div>
+        <div class="footer-copy">&copy; MMXXVI Mineral Bank. All rights reserved.</div>
+      </div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#pillars">Pillars</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const slides = document.querySelectorAll('#mb-slider .slider-slide');
+  let index = 0;
+  const total = slides.length;
+  const interval = 5000;
+
+  function showSlide(i){
+    slides.forEach((s,idx)=>s.classList.toggle('active',idx===i));
+  }
+
+  function nextSlide(){
+    index = (index + 1) % total;
+    showSlide(index);
+  }
+
+  setInterval(nextSlide, interval);
+})();
+</script>
+
+</body>
+</html>
