@@ -1,7 +1,7 @@
 ﻿services:
   - type: web
     name: mineral-bank
-    env: node
+    runtime: node
     region: ohio
     plan: free
     buildCommand: npm install
