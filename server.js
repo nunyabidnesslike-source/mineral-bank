@@ -29,7 +29,7 @@ app.post('/api/contact', async (req, res) => {
             from: 'Mineral Bank Staging <onboarding@resend.dev>',
             to: ['nunya.bidnesslike@gmail.com'],
             subject: "[Staging Test] Contact from " ,
-            text: Name: \nEmail: \nMessage: 
+            text: "Name: \nEmail: \nMessage:" 
         });
 
         return res.status(200).json({ success: true, data });
@@ -39,5 +39,5 @@ app.post('/api/contact', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(Mineral Bank staging server running on port );
+    console.log(`Mineral Bank staging server running on port ${PORT}`);
 });
