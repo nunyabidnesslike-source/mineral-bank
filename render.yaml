@@ -1,4 +1,4 @@
-﻿services:
+services:
   - type: web
     name: mineral-bank
     env: node
@@ -6,4 +6,7 @@
     plan: free
     buildCommand: npm install
     startCommand: npm start
+    envVars:
+      - key: RESEND_API_KEY
+        sync: false
 # sync-id: 20260801-005628
