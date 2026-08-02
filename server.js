@@ -41,3 +41,4 @@ app.post('/api/contact', async (req, res) => {
 app.listen(PORT, () => {
     console.log(`Mineral Bank staging server running on port ${PORT}`);
 });
+
