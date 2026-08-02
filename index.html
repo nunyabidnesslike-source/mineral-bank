@@ -341,7 +341,7 @@ footer{background:var(--bg-secondary);border-top:1px solid var(--border);padding
         </div>
       </div>
       <div class="contact-form">
-        <form>
+        <form  onsubmit="window.handleContactSubmit(event); return false;">
           <div class="form-group">
             <label for="full-name">Full Name</label>
             <input id="full-name" type="text" placeholder="Your name">
@@ -489,5 +489,51 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+</script>
+<script>
+window.handleContactSubmit = async function(e) {
+    e.preventDefault();
+    console.log('[FeelIX] Direct form submit intercepted.');
+
+    const form = e.target;
+    const nameInput = document.getElementById('full-name') || form.querySelector('input[name="name"]') || form.querySelector('input');
+    const emailInput = document.getElementById('email') || form.querySelector('input[type="email"]');
+    const messageInput = document.getElementById('message') || form.querySelector('textarea');
+    const btn = form.querySelector('button[type="submit"]') || form.querySelector('button');
+
+    const name = nameInput ? nameInput.value : '';
+    const email = emailInput ? emailInput.value : '';
+    const message = messageInput ? messageInput.value : '';
+
+    const originalText = btn ? btn.textContent : 'Send';
+    if (btn) {
+        btn.textContent = 'Sending...';
+        btn.disabled = true;
+    }
+
+    try {
+        const res = await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, message })
+        });
+        const data = await res.json();
+
+        if (data.success) {
+            alert('Inquiry transmitted successfully. We will be in touch.');
+            form.reset();
+        } else {
+            alert('Transmission failed: ' + (data.error || 'Unknown error'));
+        }
+    } catch (err) {
+        alert('Network error. Please try again later.');
+    } finally {
+        if (btn) {
+            btn.textContent = originalText;
+            btn.disabled = false;
+        }
+    }
+    return false;
+};
 </script>
 </body>
