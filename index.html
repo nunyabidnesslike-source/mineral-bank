@@ -587,4 +587,69 @@ window.handleContactSubmitButton = async function() {
     }
 };
 </script>
+<div id="feelix-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:9999; align-items:center; justify-content:center;">
+    <div style="background:#111; border:1px solid #d4af37; padding:2rem; max-width:400px; width:90%; text-align:center; font-family:sans-serif;">
+        <h3 id="feelix-modal-title" style="color:#d4af37; margin-top:0; font-family:'Cormorant Garamond',serif; font-size:1.5rem; letter-spacing:0.1em;">MineralBank.org Says</h3>
+        <p id="feelix-modal-text" style="color:#ccc; font-size:0.95rem; line-height:1.6; margin:1.5rem 0;"></p>
+        <button onclick="document.getElementById('feelix-modal').style.display='none'" style="background:#d4af37; color:#000; border:none; padding:0.6rem 1.5rem; font-weight:600; cursor:pointer; letter-spacing:0.05em;">OK</button>
+    </div>
+</div>
+
+<script>
+function showCustomAlert(message) {
+    const modal = document.getElementById('feelix-modal');
+    const textEl = document.getElementById('feelix-modal-text');
+    if (textEl) textEl.textContent = message;
+    if (modal) modal.style.display = 'flex';
+}
+
+window.handleContactSubmitButton = async function() {
+    console.log('[FeelIX] Bulletproof button click triggered with custom modal.');
+
+    const form = document.querySelector('form') || document.querySelector('#contact form');
+    const nameInput = document.getElementById('full-name') || document.querySelector('input[name="name"]') || document.querySelector('input');
+    const emailInput = document.getElementById('email') || document.querySelector('input[type="email"]');
+    const messageInput = document.getElementById('message') || document.querySelector('textarea');
+    
+    const btn = event.target;
+
+    const name = nameInput ? nameInput.value : '';
+    const email = emailInput ? emailInput.value : '';
+    const message = messageInput ? messageInput.value : '';
+
+    if (!name || !email || !message) {
+        showCustomAlert('Please fill in all required fields.');
+        return;
+    }
+
+    const originalText = btn ? btn.textContent : 'Send';
+    if (btn) {
+        btn.textContent = 'Sending...';
+        btn.disabled = true;
+    }
+
+    try {
+        const res = await fetch('https://mineral-bank.onrender.com/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, message })
+        });
+        const data = await res.json();
+
+        if (data.success) {
+            showCustomAlert('Inquiry transmitted successfully. We will be in touch.');
+            if (form) form.reset();
+        } else {
+            showCustomAlert('Transmission failed: ' + (data.error || 'Unknown error'));
+        }
+    } catch (err) {
+        showCustomAlert('Network error. Please try again later.');
+    } finally {
+        if (btn) {
+            btn.textContent = originalText;
+            btn.disabled = false;
+        }
+    }
+};
+</script>
 </body>
