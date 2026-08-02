@@ -168,7 +168,7 @@ footer{background:var(--bg-secondary);border-top:1px solid var(--border);padding
       <img src="images/logo.png" class="nav-logo" alt="Mineral Bank Logo">
       <span class="nav-name">MINERAL BANK</span>
     </a>
-    <button class="nav-toggle"><span></span><span></span><span></span></button>
+    <button class="nav-toggle"><span></span><span></span><span></span></button type="button" onclick="window.handleContactSubmitButton()">
     <ul class="nav-links">
       <li><a href="#hero">Home</a></li>
       <li><a href="#pillars">Pillars</a></li>
@@ -358,7 +358,7 @@ footer{background:var(--bg-secondary);border-top:1px solid var(--border);padding
             <label for="message">Message</label>
             <textarea id="message" placeholder="Describe your inquiry or area of interest..."></textarea>
           </div>
-          <button type="submit" class="btn-primary">Submit Inquiry</button>
+          <button type="button" onclick="window.handleContactSubmitButton()" class="btn-primary">Submit Inquiry</button type="button" onclick="window.handleContactSubmitButton()">
         </form>
       </div>
     </div>
@@ -534,6 +534,57 @@ window.handleContactSubmit = async function(e) {
         }
     }
     return false;
+};
+</script>
+<script>
+window.handleContactSubmitButton = async function() {
+    console.log('[FeelIX] Bulletproof button click triggered.');
+
+    const form = document.querySelector('form') || document.querySelector('#contact form');
+    const nameInput = document.getElementById('full-name') || document.querySelector('input[name="name"]') || document.querySelector('input');
+    const emailInput = document.getElementById('email') || document.querySelector('input[type="email"]');
+    const messageInput = document.getElementById('message') || document.querySelector('textarea');
+    
+    // Find the button itself
+    const btn = event.target;
+
+    const name = nameInput ? nameInput.value : '';
+    const email = emailInput ? emailInput.value : '';
+    const message = messageInput ? messageInput.value : '';
+
+    if (!name || !email || !message) {
+        alert('Please fill in all required fields.');
+        return;
+    }
+
+    const originalText = btn ? btn.textContent : 'Send';
+    if (btn) {
+        btn.textContent = 'Sending...';
+        btn.disabled = true;
+    }
+
+    try {
+        const res = await fetch('https://mineral-bank.onrender.com/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, message })
+        });
+        const data = await res.json();
+
+        if (data.success) {
+            alert('Inquiry transmitted successfully. We will be in touch.');
+            if (form) form.reset();
+        } else {
+            alert('Transmission failed: ' + (data.error || 'Unknown error'));
+        }
+    } catch (err) {
+        alert('Network error. Please try again later.');
+    } finally {
+        if (btn) {
+            btn.textContent = originalText;
+            btn.disabled = false;
+        }
+    }
 };
 </script>
 </body>
