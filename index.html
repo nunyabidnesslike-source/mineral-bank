@@ -442,7 +442,48 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 </script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector('#contact form');
+    if (!form) return;
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const name = document.getElementById('full-name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+        const btn = form.querySelector('button[type="submit"]');
+        
+        const originalText = btn.textContent;
+        btn.textContent = 'Sending...';
+        btn.disabled = true;
+
+        try {
+            const res = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, email, message })
+            });
+            const data = await res.json();
+
+            if (data.success) {
+                alert('Inquiry transmitted successfully. We will be in touch.');
+                form.reset();
+            } else {
+                alert('Transmission failed: ' + (data.error || 'Unknown error'));
+            }
+        } catch (err) {
+            alert('Network error. Please try again later.');
+        } finally {
+            btn.textContent = originalText;
+            btn.disabled = false;
+        }
+    });
+});
+</script>
 </body>
 </html>
+
 
 
