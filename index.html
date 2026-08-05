@@ -411,12 +411,18 @@ footer{background:var(--bg-secondary);border-top:1px solid var(--border);padding
     </div>
 </div>
 
+<div id="feelix-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(10,15,30,0.85); z-index:99999; justify-content:center; align-items:center;">
+    <div style="background:#111827; color:#f9fafb; padding:32px; border-radius:12px; max-width:420px; width:90%; text-align:center; border: 1px solid #374151;">
+        <h3 style="margin:0 0 12px 0; font-size:20px; color:#38bdf8;">Mineral Bank Notice</h3>
+        <p id="feelix-modal-text" style="margin:0 0 24px 0; font-size:15px; color:#9ca3af; line-height:1.5;"></p>
+        <button onclick="document.getElementById('feelix-modal').style.display='none'" style="background:#0284c7; color:#fff; border:none; padding:12px 24px; font-weight:600; border-radius:6px; cursor:pointer; width:100%;">OK</button>
+    </div>
+</div>
+
 <script>
-function showCustomAlert(message) {
-    const modal = document.getElementById('feelix-modal');
-    const textEl = document.getElementById('feelix-modal-text');
-    if (textEl) textEl.textContent = message;
-    if (modal) modal.style.display = 'flex';
+function showCustomAlert(msg) {
+    document.getElementById('feelix-modal-text').textContent = msg;
+    document.getElementById('feelix-modal').style.display = 'flex';
 }
 
 window.handleContactSubmitButton = async function() {
@@ -434,15 +440,8 @@ window.handleContactSubmitButton = async function() {
         return;
     }
 
-    const btn = event ? event.target : document.querySelector('#contact button[type="button"], #contact .btn-primary');
-    const originalText = btn ? btn.textContent : 'Submit Inquiry';
-    if (btn) {
-        btn.textContent = 'Sending...';
-        btn.disabled = true;
-    }
-
     try {
-        const res = await fetch\(window.location.origin + '/api/contact', {
+        const res = await fetch(window.location.origin + '/api/contact', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, email, message })
@@ -457,15 +456,8 @@ window.handleContactSubmitButton = async function() {
         }
     } catch (err) {
         showCustomAlert('Network error. Please try again later.');
-    } finally {
-        if (btn) {
-            btn.textContent = originalText;
-            btn.disabled = false;
-        }
     }
 };
 </script>
 </body>
 </html>
-
-
