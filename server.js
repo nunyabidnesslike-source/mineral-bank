@@ -26,7 +26,7 @@ app.post('/api/contact', async (req, res) => {
         }
 
         const data = await resend.emails.send({
-            from: 'Mineral Bank Staging <noreply@mineralbank.org>',
+            from: 'Mineral Bank Staging <onboarding@resend.dev>',
             to: ['nunya.bidnesslike@gmail.com'],
             subject: `[Staging Test] Contact from ${name}`,
             text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
