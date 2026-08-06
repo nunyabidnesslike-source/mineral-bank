@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -240,17 +240,17 @@ footer{background:var(--bg-secondary);border-top:1px solid var(--border);padding
     </div>
     <div class="pillars-grid">
       <article class="pillar-card">
-        <div class="pillar-icon">Γ¢Å</div>
+        <div class="pillar-icon">⛏</div>
         <h3 class="pillar-title">Strategic Reserve Vaulting</h3>
         <p class="pillar-text">Sovereign-grade physical custody for certified mineral reserves &mdash; gold, rare earths, industrial metals, and strategic commodities &mdash; providing stability anchored in physical assets.</p>
       </article>
       <article class="pillar-card">
-        <div class="pillar-icon">≡ƒñ¥</div>
+        <div class="pillar-icon">🤝</div>
         <h3 class="pillar-title">Mineral & Asset Acquisitions</h3>
         <p class="pillar-text">Facilitating non-depository, institutional acquisition protocols for high-purity mineral deposits, physical reserves, and strategic resource holdings with rigorous verification.</p>
       </article>
       <article class="pillar-card">
-        <div class="pillar-icon">≡ƒÅ¢</div>
+        <div class="pillar-icon">🏛</div>
         <h3 class="pillar-title">Asset Intelligence</h3>
         <p class="pillar-text">Proprietary geological and market data analytics informing asset verification decisions. Real-time resource valuations, supply-chain risk modelling, and jurisdictional intelligence at scale.</p>
       </article>
@@ -317,7 +317,7 @@ footer{background:var(--bg-secondary);border-top:1px solid var(--border);padding
 <section id="charter">
   <div class="section-inner">
     <p class="charter-quote">We hold that the wealth residing within the earth is not merely a commodity to be extracted, but a core reserve to be stewarded &mdash; with geological integrity, Institutional Integrity, and an unbroken chain of accountability to those who follow.</p>
-    <div class="charter-source">Mineral Bank Founding Charter ┬╖ MMXXVI</div>
+    <div class="charter-source">Mineral Bank Founding Charter · MMXXVI</div>
   </div>
 </section>
 
@@ -336,8 +336,8 @@ footer{background:var(--bg-secondary);border-top:1px solid var(--border);padding
         <p>For institutional relationships, custody arrangements, and strategic partnerships, we invite qualified counterparties to initiate a confidential dialogue with our client relations team.</p>
         <div class="contact-detail">
           <span>Headquarters</span>
-          <strong>Mineral Bank ┬╖ Global Resource Vaulting Infrastructure</strong>
-          <span>Founded MMXXVI ┬╖ Global Operations</span>
+          <strong>Mineral Bank · Global Resource Vaulting Infrastructure</strong>
+          <span>Founded MMXXVI · Global Operations</span>
         </div>
       </div>
       <div class="contact-form">
@@ -420,7 +420,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (submitBtn) submitBtn.innerText = 'Sending...';
 
             try {
-                const response = await fetch('/api/contact', {
+                const response = await fetch('https://mineral-bank.onrender.com/api/contact', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ name, email, message })
@@ -564,7 +564,7 @@ window.handleContactSubmitButton = async function() {
     }
 
     try {
-        const res = await fetch('/api/contact', {
+        const res = await fetch('https://mineral-bank.onrender.com/api/contact', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, email, message })
@@ -579,71 +579,6 @@ window.handleContactSubmitButton = async function() {
         }
     } catch (err) {
         alert('Network error. Please try again later.');
-    } finally {
-        if (btn) {
-            btn.textContent = originalText;
-            btn.disabled = false;
-        }
-    }
-};
-</script>
-<div id="feelix-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:9999; align-items:center; justify-content:center;">
-    <div style="background:#111; border:1px solid #d4af37; padding:2rem; max-width:400px; width:90%; text-align:center; font-family:sans-serif;">
-        <h3 id="feelix-modal-title" style="color:#d4af37; margin-top:0; font-family:'Cormorant Garamond',serif; font-size:1.5rem; letter-spacing:0.1em;">MineralBank.org Says</h3>
-        <p id="feelix-modal-text" style="color:#ccc; font-size:0.95rem; line-height:1.6; margin:1.5rem 0;"></p>
-        <button onclick="document.getElementById('feelix-modal').style.display='none'" style="background:#d4af37; color:#000; border:none; padding:0.6rem 1.5rem; font-weight:600; cursor:pointer; letter-spacing:0.05em;">OK</button>
-    </div>
-</div>
-
-<script>
-function showCustomAlert(message) {
-    const modal = document.getElementById('feelix-modal');
-    const textEl = document.getElementById('feelix-modal-text');
-    if (textEl) textEl.textContent = message;
-    if (modal) modal.style.display = 'flex';
-}
-
-window.handleContactSubmitButton = async function() {
-    console.log('[FeelIX] Bulletproof button click triggered with custom modal.');
-
-    const form = document.querySelector('form') || document.querySelector('#contact form');
-    const nameInput = document.getElementById('full-name') || document.querySelector('input[name="name"]') || document.querySelector('input');
-    const emailInput = document.getElementById('email') || document.querySelector('input[type="email"]');
-    const messageInput = document.getElementById('message') || document.querySelector('textarea');
-    
-    const btn = event.target;
-
-    const name = nameInput ? nameInput.value : '';
-    const email = emailInput ? emailInput.value : '';
-    const message = messageInput ? messageInput.value : '';
-
-    if (!name || !email || !message) {
-        showCustomAlert('Please fill in all required fields.');
-        return;
-    }
-
-    const originalText = btn ? btn.textContent : 'Send';
-    if (btn) {
-        btn.textContent = 'Sending...';
-        btn.disabled = true;
-    }
-
-    try {
-        const res = await fetch('/api/contact', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, email, message })
-        });
-        const data = await res.json();
-
-        if (data.success) {
-            showCustomAlert('Inquiry transmitted successfully. We will be in touch.');
-            if (form) form.reset();
-        } else {
-            showCustomAlert('Transmission failed: ' + (data.error || 'Unknown error'));
-        }
-    } catch (err) {
-        showCustomAlert('Network error. Please try again later.');
     } finally {
         if (btn) {
             btn.textContent = originalText;
