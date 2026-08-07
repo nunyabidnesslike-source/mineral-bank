@@ -493,7 +493,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <script>
 window.handleContactSubmit = async function(e) {
     e.preventDefault();
-    console.log('[FeelIX] Direct form submit intercepted.');
+    console.log('Direct form submit intercepted.');
 
     const form = e.target;
     const nameInput = document.getElementById('full-name') || form.querySelector('input[name="name"]') || form.querySelector('input');
@@ -538,7 +538,7 @@ window.handleContactSubmit = async function(e) {
 </script>
 <script>
 window.handleContactSubmitButton = async function() {
-    console.log('[FeelIX] Bulletproof button click triggered.');
+    console.log('Bulletproof button click triggered.');
 
     const form = document.querySelector('form') || document.querySelector('#contact form');
     const nameInput = document.getElementById('full-name') || document.querySelector('input[name="name"]') || document.querySelector('input');
@@ -588,3 +588,4 @@ window.handleContactSubmitButton = async function() {
 };
 </script>
 </body>
+
